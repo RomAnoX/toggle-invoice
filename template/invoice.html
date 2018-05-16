@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <META http-equiv="X-UA-Compatible" content="IE=8">
+      <TITLE>Invoice {{ number }}</TITLE>
+      <META name="generator" content="Romanox toggl-invoice">
+      <STYLE type="text/css">
+        body {
+          margin-top: 0px;
+          margin-left: 0px;
+          font: 12px 'Arial';
+          line-height: 15px;
+        }
+
+        table {
+          border-spacing: 0;
+          border-collapse: collapse;
+        }
+
+        tr {
+          height: 20px;
+        }
+
+        td { 
+          padding: 0;
+        }
+
+        tr.header td {
+          background-color: #e6e6e6;
+        }
+
+        .bold {
+          font-weight: bold;
+        }
+
+        .page {
+          position: relative;
+          margin: 50px 0 20px 53px;
+          padding: 0;
+          border: none;
+          width: 687px;
+        }
+
+        .info {
+          margin-bottom: 20px;
+        }
+
+        p {
+          margin: 0;
+        }
+
+        .info .invoice {
+          margin-left: 458px;
+        }
+
+        .content td {
+          border-bottom: #e6e6e6 1px solid;
+          word-wrap: break-word;
+        }
+
+        .content td p {
+          padding: 8px 10px;
+        }
+
+        .bottom table {
+          width: 213px;
+          margin-left: 527px;
+          margin-top: 20px;
+        }
+
+        .bottom p {
+          padding: 10px 5px;
+        }
+
+      </STYLE>
+   </HEAD>
+   <BODY>
+      {% assign DESCRIPTION = 0 %}
+      {% assign START = 1 %}
+      {% assign HOURS = 4 %}
+      {% assign RATE = 5 %}
+      {% assign AMOUNT = 6 %}
+      <DIV class="page">
+         <DIV class="info">
+            <DIV class="bill_from">
+               <TABLE>
+                  <TR>
+                     <TD width="229"><P>{{ bill_from['name'] }}</P></TD>
+                     <TD><P>{{ bill_from['street'] }}</P></TD>
+                  </TR>
+                  <TR>
+                     <TD><P>{{ bill_from['email'] }}</P></TD>
+                     <TD><P>{{ bill_from['locality'] }}</P></TD>
+                  </TR>
+                  <TR>
+                     <TD><P>&nbsp;</P></TD>
+                     <TD><P>{{ bill_from['country'] }}</P></TD>
+                  </TR>
+               </TABLE>
+            </DIV>
+            <DIV class="invoice">
+               <TABLE width="229">
+                  <TR>
+                     <TD>
+                        <P>Invoice Number</P>
+                     </TD>
+                     <TD>
+                       <P>{{ number }}</P>
+                     </TD>
+                  </TR>
+                  <TR>
+                     <TD>
+                        <P>Invoice Date</P>
+                     </TD>
+                     <TD>
+                       <P>{{ date }}</P>
+                     </TD>
+                  </TR>
+                  <TR>
+                     <TD>
+                        <P>Balance Due</P>
+                     </TD>
+                     <TD>
+                       <P>{{ total_amount }}</P>
+                     </TD>
+                  </TR>
+               </TABLE>
+            </DIV>
+            <DIV class="bill_to">
+              <TABLE>
+                <TR><TD><P>{{ bill_to['name'] }}</P></TD></TR>
+                <TR><TD><P>{{ bill_to['street'] }}</P></TD></TR>
+                <TR><TD><P>{{ bill_to['locality'] }}</P></TD></TR>
+                <TR><TD><P>{{ bill_to['country'] }}</P></TD></TR> 
+              </TABLE>
+             </DIV>
+         </DIV>
+         <DIV class="content">
+            <TABLE width="687">
+               <TR class="header bold">
+                  <TD width="100"><P>Date</P></TD>
+                  <TD width="304"><P>Description</P></TD>
+                  <TD width="111"><P>Unit Cost</P></TD>
+                  <TD width="89"><P>Quantity</P></TD>
+                  <TD width="83"><P>Line Total</P></TD>
+               </TR>
+               {% for item in items %}
+               <TR>
+                  <TD><P><NOBR>{{ item[START] }}</NOBR></P></TD>
+                  <TD><P>{{ item[DESCRIPTION] }}</P></TD>
+                  <TD><P>{{ item[RATE] }}</P></TD>
+                  <TD><P>{{ item[HOURS] }}</P></TD>
+                  <TD><P>{{ item[AMOUNT] }}</P></TD>
+               </TR>
+               {% endfor %}
+            </TABLE>
+         </DIV>
+      </DIV>
+      <DIV class="bottom">
+         <TABLE>
+            <TR>
+               <TD><P>Subtotal</P></TD>
+               <TD align="right"><P>{{ total_amount }}</P></TD>
+            </TR>
+            <TR>
+               <TD><P>Paid To Date</P></TD>
+               <TD align="right"><P>$0.00</P></TD>
+            </TR>
+            <TR class="header">
+               <TD><P>Balance Due</P></TD>
+               <TD align="right"><P>{{ total_amount }}</P></TD>
+            </TR>
+         </TABLE>
+      </DIV>
+   </BODY>
+ </HTML>

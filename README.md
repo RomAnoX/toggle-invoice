@@ -8,7 +8,7 @@ I am not affiliated in any way with Toggl, although they seem like nice folks.  
 
 For Toggl bugs: http://support.toggl.com/
 
-For bugs with my script: https://github.com/RomAnoX/toggl-invoice/issues
+For bugs with my script: https://github.com/RomAnoX/toggle-invoice/issues
 
 Requirements
 ------------

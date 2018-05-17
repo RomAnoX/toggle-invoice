@@ -8,7 +8,7 @@ I am not affiliated in any way with Toggl, although they seem like nice folks.  
 
 For Toggl bugs: http://support.toggl.com/
 
-For bugs with my script: https://github.com/eimajenthat/toggl-invoice/issues
+For bugs with my script: https://github.com/RomAnoX/toggl-invoice/issues
 
 Requirements
 ------------
@@ -52,14 +52,6 @@ Notes
 Forking
 -------
 This is GitHub, and this is open source software.  You are free to fork, use, and modify the code to your needs.  I would appreciate a pull request if you fix any bugs, or make any changes others might find useful.
-
-Acknowledgements
-----------------
-Toggl-Invoice uses a number of handy Ruby gems to handle CSVs, PDFs, and HTML templates.  Writing all that myself would be a huge pain, especially the PDF part, which is well beyond my skill level.
-
-The spiffy HTML template used for the invoices comes from: https://github.com/tophermade/sprInvoice
-
-My thanks to TopherMade and the Romulan Star Empire for sharing!
 
 License
 -------

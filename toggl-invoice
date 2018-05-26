@@ -139,11 +139,12 @@ HERE
 
   puts invoice_txt
 
-  # TODO: uncomment the next line
+  # TODO: uncomment the next line if you want a text version
   # File.open(invoice_save + 'txt', 'w') {|f| f.write(invoice_txt) }
 
   # Generate HTML Invoice
   invoice['total_amount'] = invoice['total'].format
+  invoice['summary'] = invoice['summary'].to_a
   template_html = File.open("template/invoice.html").read
   invoice_html = Liquid::Template.parse(template_html).render(invoice)
 

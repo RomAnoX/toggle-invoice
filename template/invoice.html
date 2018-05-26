@@ -22,7 +22,7 @@
           height: 20px;
         }
 
-        td { 
+        td {
           padding: 0;
         }
 
@@ -54,7 +54,9 @@
           margin-left: 458px;
         }
 
-        .content td {
+        .content td,
+        .summary td,
+        .summary th {
           border-bottom: #e6e6e6 1px solid;
           word-wrap: break-word;
         }
@@ -63,13 +65,15 @@
           padding: 8px 10px;
         }
 
-        .bottom table {
+        .bottom table,
+        .summary table {
           width: 213px;
           margin-left: 527px;
           margin-top: 20px;
         }
 
-        .bottom p {
+        .bottom p,
+        .summary p {
           padding: 10px 5px;
         }
 
@@ -77,7 +81,9 @@
    </HEAD>
    <BODY>
       {% assign DESCRIPTION = 0 %}
+      {% assign PROJECT = 0 %}
       {% assign START = 1 %}
+      {% assign TOTAL = 1 %}
       {% assign HOURS = 4 %}
       {% assign RATE = 5 %}
       {% assign AMOUNT = 6 %}
@@ -132,7 +138,7 @@
                 <TR><TD><P>{{ bill_to['name'] }}</P></TD></TR>
                 <TR><TD><P>{{ bill_to['street'] }}</P></TD></TR>
                 <TR><TD><P>{{ bill_to['locality'] }}</P></TD></TR>
-                <TR><TD><P>{{ bill_to['country'] }}</P></TD></TR> 
+                <TR><TD><P>{{ bill_to['country'] }}</P></TD></TR>
               </TABLE>
              </DIV>
          </DIV>
@@ -156,6 +162,21 @@
                {% endfor %}
             </TABLE>
          </DIV>
+      </DIV>
+      <DIV class="summary">
+         <TABLE>
+           <TR>
+             <TR class="header">
+                <TD colspan=2 width="100"><P>Summary by Project</P></TD>
+             </TR>
+             {% for item in summary %}
+             <TR>
+               <TD class="bold"><P>{{ item[PROJECT] }}</P></TD>
+               <TD align="right"><P>{{ item[TOTAL] }}</P></TD>
+             </TR>
+             {% endfor %}
+           </TR>
+         </TABLE>
       </DIV>
       <DIV class="bottom">
          <TABLE>

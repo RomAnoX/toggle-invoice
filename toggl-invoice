@@ -47,6 +47,7 @@ def main
   # Parse CSV
   csv = CSV.read ARGV[0], :headers => true
   csv.group_by{|row| row['Description']}.values.each do |group|
+    group.first['Client'] = 'Cast & Crew' unless group.first['Client']
     if (client.nil?)
       client = YAML.load_file(File.join(File.dirname(__FILE__),'config','clients.yml'))[group.first['Client']]
       invoice['bill_to'] = client

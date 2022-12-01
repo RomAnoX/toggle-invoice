@@ -49,7 +49,7 @@ def main
   csv.group_by{|row| row['Description']}.values.each do |group|
     group.first['Client'] = 'Cast & Crew' unless group.first['Client']
     if (client.nil?)
-      client = YAML.load_file(File.join(File.dirname(__FILE__),'config','clients.yml'))[group.first['Client']]
+      client = YAML.load_file(File.join(File.dirname(__FILE__),'config','old_clients.yml'))[group.first['Client']]
       invoice['bill_to'] = client
       invoice['hourly_rate'] = Money.new(client['rate']*100, "USD")
       invoice_save = "archive/invoice-#{invoice['number']}-#{group.first['Client'].tr('^A-Za-z0-9', '')}."
